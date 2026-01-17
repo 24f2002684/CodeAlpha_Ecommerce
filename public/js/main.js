@@ -13,6 +13,9 @@ fetch("/api/products")
                 onclick="addToCart('${p._id}')">
                 Add to Cart
               </button>
+              <a href="/product?id=${p._id}" class="btn btn-outline-light">
+        View Product
+      </a>
             </div>
           </div>
         `;
