@@ -53,5 +53,23 @@ router.post("/login", async (req, res) => {
   res.json({ message: "Login successful" });
 });
 
+// CHECK AUTH STATUS
+router.get("/status", (req, res) => {
+  if (req.session.userId) {
+    res.json({ loggedIn: true });
+  } else {
+    res.json({ loggedIn: false });
+  }
+});
+
+
+// LOGOUT
+router.get("/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.json({ message: "Logged out successfully" });
+  });
+});
+
+
 
 module.exports = router;
