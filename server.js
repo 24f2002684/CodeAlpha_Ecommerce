@@ -10,6 +10,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+app.get("/cart", (req, res) => {
+  res.sendFile(__dirname + "/views/cart.html");
+});
+
 app.use(
   session({
     secret: "codealpha-secret",
