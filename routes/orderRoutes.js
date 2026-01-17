@@ -1,14 +1,16 @@
 const express = require("express");
+const isAuthenticated = require("../middleware/authMiddleware");
+
 const router = express.Router();
 
-// Place order
-router.post("/", (req, res) => {
-  res.json({ message: "Order placed (placeholder)" });
+// Place order (PROTECTED)
+router.post("/", isAuthenticated, (req, res) => {
+  res.json({ message: "Order placed successfully (protected)" });
 });
 
-// Get user orders
-router.get("/", (req, res) => {
-  res.json({ message: "Orders fetched (placeholder)" });
+// Get orders (PROTECTED)
+router.get("/", isAuthenticated, (req, res) => {
+  res.json({ message: "Fetched user orders (protected)" });
 });
 
 module.exports = router;

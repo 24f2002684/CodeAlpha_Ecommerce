@@ -1,5 +1,6 @@
 const express = require("express");
 const Product = require("../models/Product");
+const isAuthenticated = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
@@ -10,7 +11,7 @@ router.get("/", async (req, res) => {
 });
 
 // POST add product (for testing/admin)
-router.post("/", async (req, res) => {
+router.post("/", isAuthenticated, async (req, res) => {
   const product = new Product(req.body);
   await product.save();
   res.json({ message: "Product added" });
