@@ -10,6 +10,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/views/index.html");
+});
 app.get("/cart", (req, res) => {
   res.sendFile(__dirname + "/views/cart.html");
 });
