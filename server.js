@@ -13,6 +13,13 @@ app.use(express.static("public"));
 app.get("/cart", (req, res) => {
   res.sendFile(__dirname + "/views/cart.html");
 });
+app.get("/login", (req, res) => {
+  res.sendFile(__dirname + "/views/login.html");
+});
+app.get("/register", (req, res) => {
+  res.sendFile(__dirname + "/views/register.html");
+});
+
 
 app.use(
   session({
